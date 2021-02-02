@@ -25,12 +25,15 @@ export default function Reset() {
     const authContext = useContext(AuthContext)
 
     const onsub = (data:any) =>{
-        Axios.post('https://back.hangeulpha.com/backend/rest-auth/password/reset/', {
-            email:data.email,
-
-        })
-        setRedirect(true)
-            
+        authContext.authDispatch({type:actionType.AUTH_START})
+        Axios.post('https://back.hangeulpha.com/backend/rest-auth/registration/', {
+            // email:data.email,
+            username: data.username, 
+            password1: data.password1,
+            password2: data.password2
+        }).then(res => {
+            setRedirect(true)
+            })
     }
 
     if (redirect) {
@@ -52,7 +55,8 @@ export default function Reset() {
                 <Form.Control style={{width:'270px'}} name='email' placeholder="Email" 
                 ref={register({
                     required:true,
-                    
+                    validate: value => nameVery
+                    ,
                 })} />
                 <Form.Text></Form.Text>
                     

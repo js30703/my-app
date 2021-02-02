@@ -12,7 +12,7 @@ export default function Login() {
     const authContext = useContext(AuthContext)
     const onsub = (data:any) =>{
         authContext.authDispatch({type:actionType.AUTH_START})
-        Axios.post('http://127.0.0.1:8000/rest-auth/login/', {
+        Axios.post('https://back.hangeulpha.com/backend/rest-auth/login/', {
                         username: data.username, 
                         password: data.password
                     })

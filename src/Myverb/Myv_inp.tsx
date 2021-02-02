@@ -31,7 +31,7 @@ export default function MyvInp(props:any) {
 
     const onsub = () =>{
 
-        Axios.delete('http://localhost:8000/jamo/myverbs12/',
+        Axios.delete('https://back.hangeulpha.com/backend/jamo/myverbs12/',
             {data:{id:props.verbs.id}
             ,
             headers:{

@@ -15,7 +15,7 @@ interface IFormInputs {
   }
 
 export default function Signup() {
-    const {register, errors, handleSubmit, getValues, trigger} = useForm<IFormInputs>({
+    const {register, errors , handleSubmit, getValues, trigger} = useForm<IFormInputs>({
         criteriaMode: "all",
         mode:'onChange'
     })
@@ -24,7 +24,7 @@ export default function Signup() {
     const [nameMess, setNameMess] = useState('Please check user name')
     const authContext = useContext(AuthContext)
     const nameCheckSub =(data:any) =>{
-        Axios.post('http://127.0.0.1:8000/jamo/username/',{
+        Axios.post('https://back.hangeulpha.com/backend/jamo/username/',{
             username:getValues('username')
         }).then(res => {
             if (!res.data.use) {
@@ -39,7 +39,7 @@ export default function Signup() {
     }
     const onsub = (data:any) =>{
         authContext.authDispatch({type:actionType.AUTH_START})
-        Axios.post('http://127.0.0.1:8000/rest-auth/registration/', {
+        Axios.post('https://back.hangeulpha.com/backend/rest-auth/registration/', {
             // email:data.email,
             username: data.username, 
             password1: data.password1,
@@ -153,17 +153,12 @@ export default function Signup() {
                 <Form.Group controlId="formGridEmail">
                     <Form.Label>Email</Form.Label>
                     <Form.Control name='email' type="email" placeholder="Enter email" ref={register({
-                        required:true,
+                        
                         pattern:/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])+\.[a-zA-Z]{2,}$/i,
                         })} />
 
                         <Form.Text>Email is optional. But if you do not eroll email adress, 
-                            <br/>It is impossible to find your password as you foget it.</Form.Text>
-                    {
-                        errors.email?.types?.required 
-                        && <p style={{color:'red'}}>error  :   <span style={{color:'gray'}}>
-                        email is required </span><br/></p>
-                    }
+                            <br/>it is impossible to find your password as you foget it.</Form.Text>
                     {
                         errors.email?.types?.pattern 
                         && <p style={{color:'red'}}>error  :   <span style={{color:'gray'}}>

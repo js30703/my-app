@@ -48,14 +48,14 @@ export default function Myverbs() {
 }
 
   useEffect( () =>{
-    Axios.get(`http://localhost:8000/jamo/myverbs12/?page=${page}`,{
+    Axios.get(`https://back.hangeulpha.com/backend/jamo/myverbs12/?page=${page}`,{
       headers:{
           'Authorization': `token ${localStorage.getItem('token')}`
       }
     }).then( res => { 
       setA(res.data.results)
       setPageC(res.data.count)
-      console.log(res)
+      
     })
     
   },[cur,page])

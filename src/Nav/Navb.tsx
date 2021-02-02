@@ -7,7 +7,7 @@ import Axios from 'axios'
 export default function Navb() {
     const authContext = useContext(AuthContext)
     const onsub = () =>{
-        Axios.post('http://127.0.0.1:8000/rest-auth/logout/', {
+        Axios.post('https://back.hangeulpha.com/backend/rest-auth/logout/', {
                         token:localStorage.getItem("token")
                     })
         .then(() => {

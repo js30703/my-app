@@ -25,7 +25,7 @@ export default function Inputcheck(props:any) {
 
     const onsub = () =>{
         
-        Axios.post('http://localhost:8000/jamo/myverbs12/',
+        Axios.post('https://back.hangeulpha.com/backend/jamo/myverbs12/',
             {id:props.verbs.id}
             ,{
             headers:{

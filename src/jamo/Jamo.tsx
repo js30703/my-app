@@ -42,7 +42,7 @@ export default function Jamo() {
 }
 
   useEffect( () =>{
-    axios.get(`http://127.0.0.1:8000/jamo/verbs/${level}/`).then( res => { 
+    axios.get(`https://back.hangeulpha.com/backend/jamo/verbs/${level}/`).then( res => { 
       setA(res.data)
     })
     
